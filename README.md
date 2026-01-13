@@ -47,11 +47,28 @@ We have configured the following applications using ArgoCD:
 - **Path:** `guestbook`
 - **Access:** Exposed via LoadBalancer.
 
+
 ### Podinfo (Professional Demo)
 - **Repository:** `https://github.com/stefanprodan/podinfo.git`
 - **Path:** `kustomize`
 - **Configuration:** `selfHeal` disabled to allow manual LoadBalancer patching.
 - **Access:** Exposed via LoadBalancer.
+
+## 4. Custom CI/CD Pipeline (GitHub Actions)
+
+We implemented a full Level 4 CI/CD pipeline for the custom application `my-app`.
+
+**Workflow:**
+1. **Source Code**: Located in `./my-app` (HTML + Dockerfile).
+2. **GitHub Action**: Trigged on push to `main`.
+   - Builds Docker image.
+   - Pushes to DockerHub (`isidroalfonsin/my-app`).
+   - Updates `my-app/k8s/deployment.yaml` with the new image SHA.
+3. **ArgoCD**: Detects the change in the manifest and syncs the cluster.
+
+**Required Secrets (GitHub Repo):**
+- `DOCKER_USERNAME`: Your DockerHub username.
+- `DOCKER_PASSWORD`: Your DockerHub Access Token (Read/Write/Delete).
 
 ---
 *Created as part of the Civo Kubernetes request.*
