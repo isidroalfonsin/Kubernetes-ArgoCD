@@ -1,0 +1,6 @@
+# Sensitive Credentials
+kubeconfig.yaml
+kubeconfig
+
+# System Files
+.DS_Store
