@@ -72,3 +72,7 @@ We implemented a full Level 4 CI/CD pipeline for the custom application `my-app`
 
 ---
 *Created as part of the Civo Kubernetes request.*
+
+All the screenshots are in the `screenshots` folder.
+
+The cluster has been deleted for cost saving reasons.
